@@ -14,7 +14,7 @@ namespace TeamCreatorInAspNetCore.Pages
 
         public void OnGet()
         {
-
+            Console.WriteLine("Hello World!! :-)");
         }
     }
 }
