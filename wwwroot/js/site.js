@@ -1,8 +1,20 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿// Remove saved data from sessionStorage
+// sessionStorage.removeItem('myData');
 
-// Write your JavaScript code.
-function OnClickHandler(buttonType) {    
+// Remove all saved data from sessionStorage
+// sessionStorage.clear();
+
+function InitializeData() {
+    sessionStorage.setItem('myData', JSON.stringify(['Ruben', 'Baskaran']));
+}
+
+function OnClickHandler(buttonType) {
+    let data = JSON.parse(sessionStorage.getItem('myData'))
+    console.log(data);
+    data.push('Sivasakthy');
+    console.log(data);
+    sessionStorage.setItem('myData', JSON.stringify(data));
+
     switch (buttonType) {
         case "change color":
             if (document.getElementById("fullnameLabelDiv").style.backgroundColor == "orange") {
@@ -11,10 +23,10 @@ function OnClickHandler(buttonType) {
                 document.getElementById("fullnameLabelDiv").style.backgroundColor = "orange"
             }
             break;
-        case "change name":            
-            if (document.getElementById("fullnameLabel").innerText == "Ruben Baskaran") {                
+        case "change name":
+            if (document.getElementById("fullnameLabel").innerText == "Ruben Baskaran") {
                 document.getElementById("fullnameLabel").innerText = "Baskaran Rajakrishnan"
-            } else {                
+            } else {
                 document.getElementById("fullnameLabel").innerText = "Ruben Baskaran"
             };
             break;
